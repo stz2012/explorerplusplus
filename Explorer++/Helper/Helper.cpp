@@ -187,16 +187,16 @@ TCHAR *Buffer,int MaxCharacters,BOOL bFriendlyDate)
 	else
 	{
 		iReturn1 = GetDateFormat(LOCALE_USER_DEFAULT,LOCALE_USE_CP_ACP,&SystemTime,
-		NULL,DateBuffer,MAX_STRING_LENGTH);
+		_T("yyyy/MM/dd"),DateBuffer,MAX_STRING_LENGTH);
 	}
 
 	iReturn2 = GetTimeFormat(LOCALE_USER_DEFAULT,LOCALE_USE_CP_ACP,&SystemTime,
-	NULL,TimeBuffer,MAX_STRING_LENGTH);
+	_T("HH:mm:ss"),TimeBuffer,MAX_STRING_LENGTH);
 	
 	if(iReturn1 && iReturn2)
 	{
 		StringCchPrintf(TempBuffer,SIZEOF_ARRAY(TempBuffer),
-			_T("%s, %s"),DateBuffer,TimeBuffer);
+			_T("%s %s"),DateBuffer,TimeBuffer);
 
 		if(MaxCharacters < (lstrlen(TempBuffer) + 1))
 		{
