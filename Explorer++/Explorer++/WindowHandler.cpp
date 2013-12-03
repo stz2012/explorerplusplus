@@ -57,7 +57,8 @@ void Explorerplusplus::CreateFolderControls(void)
 	if(m_bShowFolders)
 		uStyle |= WS_VISIBLE;
 
-	m_hHolder = CreateHolderWindow(m_hContainer,_T("Folders"),uStyle);
+	LoadString(g_hLanguageModule,IDS_FOLDERPANE_HEADER,szTemp,SIZEOF_ARRAY(szTemp));
+	m_hHolder = CreateHolderWindow(m_hContainer,szTemp,uStyle);
 	SetWindowSubclass(m_hHolder,TreeViewHolderProcStub,0,(DWORD_PTR)this);
 
 	m_hTreeView = CreateTreeView(m_hHolder,TreeViewStyles);
