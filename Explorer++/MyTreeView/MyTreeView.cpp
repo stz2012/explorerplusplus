@@ -85,6 +85,7 @@ HANDLE hIconsThread)
 	m_bDragAllowed		= FALSE;
 
 	m_bShowHidden		= TRUE;
+	m_bShowZipFolders	= TRUE;
 
 	InitializeDragDropHelpers();
 
@@ -640,6 +641,17 @@ HTREEITEM hParent)
 						BOOL bSkipItem = FALSE;
 
 						StrRetToBuf(&str,rgelt,ItemName,SIZEOF_ARRAY(ItemName));
+
+						// Hides lzh / zip files
+						if(!m_bShowZipFolders)
+						{
+							if(!(Attributes & SFGAO_FILESYSANCESTOR) && 
+							   !lstrcmpi(PathFindExtension(ItemName),_T(".lzh")) )
+								bSkipItem = TRUE;
+							if(!(Attributes & SFGAO_FILESYSANCESTOR) && 
+							   !lstrcmpi(PathFindExtension(ItemName),_T(".zip")) )
+								bSkipItem = TRUE;
+						}
 
 						if (!bSkipItem)
 						{ 
@@ -1864,6 +1876,11 @@ BOOL CMyTreeView::QueryDragging(void)
 void CMyTreeView::SetShowHidden(BOOL bShowHidden)
 {
 	m_bShowHidden = bShowHidden;
+}
+
+void CMyTreeView::SetShowZipFolders(BOOL bShowZipFolders)
+{
+	m_bShowZipFolders = bShowZipFolders;
 }
 
 void CMyTreeView::RefreshAllIcons(void)

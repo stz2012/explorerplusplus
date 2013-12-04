@@ -770,6 +770,8 @@ INT_PTR CALLBACK Explorerplusplus::WindowProc(HWND hDlg,UINT uMsg,WPARAM wParam,
 				CheckDlgButton(hDlg,IDC_OPTION_CHECKBOXSELECTION,BST_CHECKED);
 			if(m_bUseFullRowSelect)
 				CheckDlgButton(hDlg,IDC_OPTION_FULLROWSELECT,BST_CHECKED);
+			if(m_bTreeViewShowZipFolders)
+				CheckDlgButton(hDlg,IDC_OPTION_TREEVIEWZIPFOLDERS,BST_CHECKED);
 		}
 		break;
 
@@ -791,6 +793,7 @@ INT_PTR CALLBACK Explorerplusplus::WindowProc(HWND hDlg,UINT uMsg,WPARAM wParam,
 		case IDC_OPTION_GRIDLINES:
 		case IDC_OPTION_CHECKBOXSELECTION:
 		case IDC_OPTION_FULLROWSELECT:
+		case IDC_OPTION_TREEVIEWZIPFOLDERS:
 			PropSheet_Changed(g_hOptionsPropertyDialog,hDlg);
 			break;
 		}
@@ -835,6 +838,9 @@ INT_PTR CALLBACK Explorerplusplus::WindowProc(HWND hDlg,UINT uMsg,WPARAM wParam,
 						== BST_CHECKED);
 
 					m_bTreeViewDelayEnabled = !(IsDlgButtonChecked(hDlg,IDC_OPTION_TREEVIEWDELAY)
+						== BST_CHECKED);
+
+					m_bTreeViewShowZipFolders = (IsDlgButtonChecked(hDlg,IDC_OPTION_TREEVIEWZIPFOLDERS)
 						== BST_CHECKED);
 
 					m_bExtendTabControl = (IsDlgButtonChecked(hDlg,IDC_OPTION_EXTENDTABCONTROL)
@@ -934,6 +940,8 @@ INT_PTR CALLBACK Explorerplusplus::WindowProc(HWND hDlg,UINT uMsg,WPARAM wParam,
 						NListView::ListView_AddRemoveExtendedStyle(m_hListView[(int)tcItem.lParam],
 							LVS_EX_FULLROWSELECT,m_bUseFullRowSelect);
 					}
+
+					m_pMyTreeView->SetShowZipFolders(m_bTreeViewShowZipFolders);
 
 					SaveAllSettings();
 				}

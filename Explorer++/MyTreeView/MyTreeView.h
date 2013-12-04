@@ -43,6 +43,7 @@ public:
 	DWORD WINAPI		Thread_SubFolders(LPVOID pParam);
 	DWORD WINAPI		Thread_AddDirectoryInternal(IShellFolder *pShellFolder,LPITEMIDLIST pidlDirectory,HTREEITEM hParent);
 	void				SetShowHidden(BOOL bShowHidden);
+	void				SetShowZipFolders(BOOL bShowZipFolders);
 	void				RefreshAllIcons(void);
 
 	/* Sorting. */
@@ -158,6 +159,7 @@ private:
 	TCHAR				m_szOldName[MAX_PATH];
 	BOOL				m_bRightClick;
 	BOOL				m_bShowHidden;
+	BOOL				m_bShowZipFolders;
 
 	/* Subfolder thread. */
 	CRITICAL_SECTION	m_csSubFolders;

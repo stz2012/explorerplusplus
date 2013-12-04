@@ -82,6 +82,7 @@ will need to be changed correspondingly. */
 #define HASH_STARTUPMODE			1344265373
 #define HASH_TOOLBARSTATE			3436473849
 #define HASH_TREEVIEWDELAYENABLED	2186637066
+#define HASH_TREEVIEWSHOWZIPFOLDERS	2580130803
 #define HASH_TREEVIEWWIDTH			4257779536
 #define HASH_VIEWMODEGLOBAL			3743629718
 #define HASH_POSITION				3300187802
@@ -440,6 +441,8 @@ MSXML2::IXMLDOMElement *pRoot)
 	NXMLSettings::AddWhiteSpaceToNode(pXMLDom,bstr_wsntt,pe);
 	_itow_s(m_TreeViewWidth,szValue,SIZEOF_ARRAY(szValue),10);
 	NXMLSettings::WriteStandardSetting(pXMLDom,pe,_T("Setting"),_T("TreeViewWidth"),szValue);
+	NXMLSettings::AddWhiteSpaceToNode(pXMLDom,bstr_wsntt,pe);
+	NXMLSettings::WriteStandardSetting(pXMLDom,pe,_T("Setting"),_T("TreeViewShowZipFolders"),NXMLSettings::EncodeBoolValue(m_bTreeViewShowZipFolders));
 
 	NXMLSettings::AddWhiteSpaceToNode(pXMLDom,bstr_wsntt,pe);
 	_itow_s(m_ViewModeGlobal,szValue,SIZEOF_ARRAY(szValue),10);
@@ -2304,6 +2307,10 @@ WCHAR *wszName,WCHAR *wszValue)
 
 	case HASH_TREEVIEWWIDTH:
 		m_TreeViewWidth = NXMLSettings::DecodeIntValue(wszValue);
+		break;
+
+	case HASH_TREEVIEWSHOWZIPFOLDERS:
+		m_bTreeViewShowZipFolders = NXMLSettings::DecodeBoolValue(wszValue);
 		break;
 
 	case HASH_VIEWMODEGLOBAL:

@@ -338,6 +338,7 @@ void Explorerplusplus::ValidateSingleColumnSet(int iColumnSet,std::list<Column_t
 void Explorerplusplus::ApplyLoadedSettings(void)
 {
 	m_pMyTreeView->SetShowHidden(m_bShowHiddenGlobal);
+	m_pMyTreeView->SetShowZipFolders(m_bTreeViewShowZipFolders);
 }
 
 void Explorerplusplus::ApplyToolbarSettings(void)

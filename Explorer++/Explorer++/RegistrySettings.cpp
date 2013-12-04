@@ -131,6 +131,7 @@ LONG Explorerplusplus::SaveSettings(void)
 		NRegistrySettings::SaveDwordToRegistry(hSettingsKey,_T("ShowInfoTips"),m_bShowInfoTips);
 		NRegistrySettings::SaveDwordToRegistry(hSettingsKey,_T("InfoTipType"),m_InfoTipType);
 		NRegistrySettings::SaveDwordToRegistry(hSettingsKey,_T("TreeViewDelayEnabled"),m_bTreeViewDelayEnabled);
+		NRegistrySettings::SaveDwordToRegistry(hSettingsKey,_T("TreeViewShowZipFolders"),m_bTreeViewShowZipFolders);
 		NRegistrySettings::SaveDwordToRegistry(hSettingsKey,_T("LockToolbars"),m_bLockToolbars);
 		NRegistrySettings::SaveDwordToRegistry(hSettingsKey,_T("ExtendTabControl"),m_bExtendTabControl);
 		NRegistrySettings::SaveDwordToRegistry(hSettingsKey,_T("UseFullRowSelect"),m_bUseFullRowSelect);
@@ -250,6 +251,7 @@ LONG Explorerplusplus::LoadSettings(LPCTSTR KeyPath)
 		NRegistrySettings::ReadDwordFromRegistry(hSettingsKey,_T("ShowInfoTips"),(LPDWORD)&m_bShowInfoTips);
 		NRegistrySettings::ReadDwordFromRegistry(hSettingsKey,_T("InfoTipType"),(LPDWORD)&m_InfoTipType);
 		NRegistrySettings::ReadDwordFromRegistry(hSettingsKey,_T("TreeViewDelayEnabled"),(LPDWORD)&m_bTreeViewDelayEnabled);
+		NRegistrySettings::ReadDwordFromRegistry(hSettingsKey,_T("TreeViewShowZipFolders"),(LPDWORD)&m_bTreeViewShowZipFolders);
 		NRegistrySettings::ReadDwordFromRegistry(hSettingsKey,_T("LockToolbars"),(LPDWORD)&m_bLockToolbars);
 		NRegistrySettings::ReadDwordFromRegistry(hSettingsKey,_T("ExtendTabControl"),(LPDWORD)&m_bExtendTabControl);
 		NRegistrySettings::ReadDwordFromRegistry(hSettingsKey,_T("UseFullRowSelect"),(LPDWORD)&m_bUseFullRowSelect);

@@ -837,6 +837,7 @@ private:
 	void					MoveColumnItem(HWND hDlg,BOOL bUp);
 	void					OrganizeBookmarksMove(HWND hDlg,BOOL bUp);
 	void					OnOrganizeBookmarksDelete(HWND hDlg);
+	void					OnOrganizeBookmarksDeleteAll(HWND hDlg);
 	void					OnOrganizeBookmarksOk(HWND hDlg);
 	void					OnOrganizeBookmarksProperties(HWND hDlg);
 	void					OnOrganizeBookmarksDoubleClick(HWND hDlg,LPARAM lParam);
@@ -872,6 +873,7 @@ private:
 	void					BookmarkToolbarNewBookmark(int iItem);
 	void					BookmarkToolbarNewFolder(int iItem);
 	void					RemoveItemFromBookmarksToolbar(void *pBookmarkHandle);
+	void					RemoveAllItemFromBookmarksToolbar();
 
 	/* Columns. */
 	void					OnSelectColumns();
@@ -891,7 +893,10 @@ private:
 	void					InsertBookmarksIntoMenu(void);
 	void					InsertBookmarksIntoMenuInternal(HMENU hMenu,Bookmark_t *pBookmark,int iStartPos,int iStartId);
 	void					InsertBookmarksIntoMenuInternal(HMENU hMenu,Bookmark_t *pBookmark,int iStartPos);
+	void					RemoveAllBookmarksFromMenu(void);
 	BOOL					DeleteBookmarkSafe(HWND hwnd,void *pBookmarkHandle);
+	BOOL					DeleteAllBookmarksSafe(HWND hwnd);
+	
 
 	/* Filtering. */
 	void					SetFilterStatus(void);
@@ -1092,6 +1097,7 @@ private:
 	BOOL					m_bOpenNewTabNextToCurrent;
 	BOOL					m_bConfirmCloseTabs;
 	BOOL					m_bTreeViewDelayEnabled;
+	BOOL					m_bTreeViewShowZipFolders;
 	BOOL					m_bSavePreferencesToXMLFile;
 	BOOL					m_bLockToolbars;
 	BOOL					m_bExtendTabControl;

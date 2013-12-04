@@ -306,6 +306,7 @@ void Explorerplusplus::SetDefaultValues(void)
 	m_bLargeToolbarIcons			= FALSE;
 	m_bShowTaskbarThumbnails		= TRUE;
 	m_bPlayNavigationSound			= TRUE;
+	m_bTreeViewShowZipFolders		= TRUE;
 
 	/* Infotips (user options). */
 	m_bShowInfoTips					= TRUE;
