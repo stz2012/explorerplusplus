@@ -291,7 +291,7 @@ void Explorerplusplus::CreateBookmarksToolbar(void)
 {
 	m_hBookmarksToolbar = CreateToolbar(m_hMainRebar,BookmarkToolbarStyles,
 		TBSTYLE_EX_MIXEDBUTTONS|TBSTYLE_EX_DRAWDDARROWS|
-		TBSTYLE_EX_DOUBLEBUFFER|TBSTYLE_EX_HIDECLIPPEDBUTTONS);
+		TBSTYLE_EX_DOUBLEBUFFER);
 
 	SetWindowSubclass(m_hBookmarksToolbar,BookmarksToolbarSubclassStub,0,(DWORD_PTR)this);
 
