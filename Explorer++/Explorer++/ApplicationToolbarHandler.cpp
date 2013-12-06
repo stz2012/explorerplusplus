@@ -34,7 +34,7 @@ void Explorerplusplus::CreateApplicationToolbar(void)
 
 	m_hApplicationToolbar = CreateToolbar(m_hMainRebar,ApplicationToolbarStyles,
 		TBSTYLE_EX_MIXEDBUTTONS|TBSTYLE_EX_DRAWDDARROWS|
-		TBSTYLE_EX_DOUBLEBUFFER|TBSTYLE_EX_HIDECLIPPEDBUTTONS);
+		TBSTYLE_EX_DOUBLEBUFFER);
 
 	SendMessage(m_hApplicationToolbar,TB_SETBITMAPSIZE,0,MAKELONG(16,16));
 	SendMessage(m_hApplicationToolbar,TB_BUTTONSTRUCTSIZE,(WPARAM)sizeof(TBBUTTON),0);
