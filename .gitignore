@@ -1,3 +1,9 @@
 Release
 
 *.user
+
+*.suo
+
+*.sdf
+
+*.aps
