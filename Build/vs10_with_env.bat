@@ -9,10 +9,10 @@ set TARGET_ARCH=x86
 
 IF DEFINED VS100COMNTOOLS (
 	rem Load VisualStudio Environment Variable
-	IF "%TARGET_ARCH%" == "x64" (
-		call "%VS100COMNTOOLS%..\..\VC\vcvarsall.bat" amd64
+	IF "%PROCESSOR_ARCHITECTURE%" == "x86" (
+		call "%VS100COMNTOOLS%..\..\VC\vcvarsall.bat" x86
 	) else (
-		call "%VS100COMNTOOLS%..\..\VC\vcvarsall.bat" %TARGET_ARCH%
+		call "%VS100COMNTOOLS%..\..\VC\vcvarsall.bat" x86_amd64
 	)
 ) else (
 	echo VisualStudio 2010 is not installed.
