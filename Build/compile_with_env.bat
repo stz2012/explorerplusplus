@@ -12,7 +12,7 @@ set TARGET_LANG=JA
 IF DEFINED VS100COMNTOOLS (
 	rem Load VisualStudio Environment Variable
 	IF "%TARGET_ARCH%" == "x64" (
-		call "%VS100COMNTOOLS%..\..\VC\vcvarsall.bat" amd64
+		call "%VS100COMNTOOLS%..\..\VC\vcvarsall.bat" x86_amd64
 	) else (
 		call "%VS100COMNTOOLS%..\..\VC\vcvarsall.bat" %TARGET_ARCH%
 	)
@@ -31,7 +31,11 @@ set BASE_DIR=%~f1
 exit /b
 
 :buildSolution
-devenv /useenv /build %TARGET_MODE% %1
+IF "%TARGET_ARCH%" == "x64" (
+	devenv /useenv /rebuild "%TARGET_MODE%|x64" %1
+) else (
+	devenv /useenv /rebuild "%TARGET_MODE%|Win32" %1
+)
 call :setOutputDir %1
 IF EXIST "%OUTPUT_DIR%%2" (
 	mkdir %TARGET_ARCH% > NUL 2>&1
