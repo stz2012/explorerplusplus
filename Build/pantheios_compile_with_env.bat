@@ -3,7 +3,6 @@
 call :setBaseDir %~dp0..\..\
 set PANTHEIOS_ROOT=%BASE_DIR%pantheios-1.0.1
 set STLSOFT=%BASE_DIR%stlsoft-1.9.117
-set TARGET_ARCH=x86
 
 IF DEFINED VS100COMNTOOLS (
 	rem Load VisualStudio Environment Variable
@@ -12,17 +11,29 @@ IF DEFINED VS100COMNTOOLS (
 	) else (
 		call "%VS100COMNTOOLS%..\..\VC\vcvarsall.bat" x86_amd64
 	)
-) else (
+) ELSE (
 	echo VisualStudio 2010 is not installed.
 	goto End
 )
 
-IF "%TARGET_ARCH%" == "x64" (
-	cd %PANTHEIOS_ROOT%\build\vc10.x64
-) else (
-	cd %PANTHEIOS_ROOT%\build\vc10
+IF NOT EXIST %PANTHEIOS_ROOT% (
+	echo Pantheios logging library is not installed.
+	goto End
 )
-nmake build.libs
+IF NOT EXIST %STLSOFT% (
+	echo STLSoft libraries is not installed.
+	goto End
+)
+
+IF "%PROCESSOR_ARCHITECTURE%" == "x86" (
+	cd %PANTHEIOS_ROOT%\build\vc10
+	nmake build.libs
+) ELSE (
+	cd %PANTHEIOS_ROOT%\build\vc10
+	nmake build.libs
+	cd %PANTHEIOS_ROOT%\build\vc10.x64
+	nmake build.libs
+)
 goto End
 
 :setBaseDir
