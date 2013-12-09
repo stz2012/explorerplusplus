@@ -1,6 +1,6 @@
 @echo off
 
-set TARGET_ARCH=x86
+set TARGET_ARCH=x64
 set TARGET_MODE=Release
 set TARGET_LANG=JA
 call :setBaseDir %~dp0..\..\
@@ -15,7 +15,7 @@ set STLSOFT=%BASE_DIR%stlsoft-1.9.117
 
 IF DEFINED VS100COMNTOOLS (
 	rem Load VisualStudio Environment Variable
-	IF "%PROCESSOR_ARCHITECTURE%" == "x86" (
+	IF "%TARGET_ARCH%" == "x86" (
 		call "%VS100COMNTOOLS%..\..\VC\vcvarsall.bat" x86
 	) ELSE (
 		call "%VS100COMNTOOLS%..\..\VC\vcvarsall.bat" x86_amd64

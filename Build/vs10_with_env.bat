@@ -13,7 +13,7 @@ set STLSOFT=%BASE_DIR%stlsoft-1.9.117
 
 IF DEFINED VS100COMNTOOLS (
 	rem Load VisualStudio Environment Variable
-	IF "%PROCESSOR_ARCHITECTURE%" == "x86" (
+	IF "%TARGET_ARCH%" == "x86" (
 		call "%VS100COMNTOOLS%..\..\VC\vcvarsall.bat" x86
 	) else (
 		call "%VS100COMNTOOLS%..\..\VC\vcvarsall.bat" x86_amd64
