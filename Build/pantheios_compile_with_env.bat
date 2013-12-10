@@ -26,12 +26,12 @@ IF NOT EXIST %STLSOFT% (
 )
 
 IF "%PROCESSOR_ARCHITECTURE%" == "x86" (
-	cd %PANTHEIOS_ROOT%\build\vc10
+	cd /D %PANTHEIOS_ROOT%\build\vc10
 	nmake build.libs
 ) ELSE (
-	cd %PANTHEIOS_ROOT%\build\vc10
+	cd /D %PANTHEIOS_ROOT%\build\vc10
 	nmake build.libs
-	cd %PANTHEIOS_ROOT%\build\vc10.x64
+	cd /D %PANTHEIOS_ROOT%\build\vc10.x64
 	nmake build.libs
 )
 goto End

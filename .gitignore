@@ -7,3 +7,5 @@ Release
 *.sdf
 
 *.aps
+/Build/x86
+/Build/x64

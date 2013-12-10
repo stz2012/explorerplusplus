@@ -1,6 +1,6 @@
 @echo off
 
-set TARGET_ARCH=x64
+set TARGET_ARCH=x86
 set TARGET_MODE=Release
 set TARGET_LANG=JA
 call :setBaseDir %~dp0..\..\
